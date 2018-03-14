@@ -4,6 +4,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import itertools
 import warnings
 
 import numpy as np
@@ -148,7 +149,7 @@ def choose_kepler_spline(all_time,
     spline = []
     spline_mask = []
     bad_bkspace = False  # Indicates that the current bkspace should be skipped.
-    for time, flux in zip(all_time, all_flux):
+    for time, flux in itertools.izip(all_time, all_flux):
       # Don't fit a spline on less than 4 points.
       if len(time) < 4:
         spline.append(flux)
